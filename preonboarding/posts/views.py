@@ -1,11 +1,13 @@
 import json
+from django.core import paginator
 
-from django.http      import JsonResponse, request
-from django.views     import View
+from django.http           import JsonResponse, request
+from django.views          import View
 
-from users.models     import User
-from posts.models     import Post
-from users.utils      import login_decorator
+from users.models          import User
+from posts.models          import Post
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from users.utils           import login_decorator
 
 class PostingView(View):
     @login_decorator    
@@ -27,8 +29,18 @@ class PostingView(View):
         except KeyError:
             return JsonResponse({"MESSAGE":"KEY_ERROR"}, status = 400)    
 
-    def get(self,request, post_id):
-        posts = Post.objects.all()
+    def get(self,request,post_id):
+        post_list = Post.objects.all().order_by('id')
+        paginator = Paginator(post_list, 3)
+        page      = int(request.GET.get('page',1))
+
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
 
         result = [
             {
@@ -39,7 +51,7 @@ class PostingView(View):
 
             } for post in posts]
 
-        return JsonResponse ({"result": result}, status = 200)
+        return JsonResponse ({"page" :page,"result": result}, status = 200)
 
     @login_decorator
     def delete (self,request,post_id):
