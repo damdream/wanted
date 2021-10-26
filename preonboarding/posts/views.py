@@ -14,11 +14,10 @@ class PostingView(View):
             data = json.loads(request.body)
 
             if data["title"] == "" :
-                return JsonResponse({"MESSAGE":"NULL_REVIEWS"}, status = 400)
+                return JsonResponse({"MESSAGE":"NULL_POSTS"}, status = 400)
 
             Post.objects.create( 
                 user            = request.user,
-                name            = data["name"],
                 title           = data["title"],
                 comment         = data["comment"],
             )
@@ -34,7 +33,6 @@ class PostingView(View):
         result = [
             {
                 "user"            : post.user.id,
-                "name"            : post.name ,
                 "created_at"      : post.created_at,
                 "title"           : post.title,
                 "comment"         : post.comment,
