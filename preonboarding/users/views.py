@@ -25,7 +25,7 @@ class JoinView(View):
             bcrypt_password = bcrypt.hashpw(data["password"].encode("utf-8"),bcrypt.gensalt()). decode("utf-8")    
             
             user = User.objects.create(
-                name         = data["name"],
+                user         = data["user"],
                 email        = data["email"],
                 password     = bcrypt_password,
                 phone_number = data["phone_number"],
