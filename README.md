@@ -47,7 +47,8 @@ python manage.py runserver 명령어를 통해 localhost:8000에서 실행할 �
 
 ## 💻 Unit Test 결과
 
-### 계정 생성 성공 / 중복 오류 , 게시글 조회 성공 / 게시글 조회 에러
+### 테스트 4개 진행 
+### [User Test 2개 : 계정 생성 성공 / 중복 오류 , Post Test 2개 : 게시글 조회 성공 / 게시글 조회 에러]
 <br>
 <img width="385" alt="스크린샷 2021-10-27 오전 12 38 31" src="https://user-images.githubusercontent.com/81546305/138924788-d5ef4d1b-cd97-4a1d-bf51-8092abc39d67.png">
 
