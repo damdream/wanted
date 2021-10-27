@@ -31,7 +31,7 @@ python manage.py runserver 명령어를 통해 localhost:8000에서 실행할 �
 <br>
 <img width="487" alt="스크린샷 2021-10-27 오전 1 55 48" src="https://user-images.githubusercontent.com/81546305/138925608-44c5bc08-8d0d-4a21-a4ef-d3e23d2a5d57.png">
 
-### 👉🏻 게시글 조회
+### 👉🏻 게시글 조회 _ Pagination 진행
 <br>
 <img width="781" alt="스크린샷 2021-10-26 오후 11 26 30" src="https://user-images.githubusercontent.com/81546305/138925122-59ac5c95-87f9-4ee2-9079-822200ae480e.png">
 
